@@ -34,22 +34,22 @@ class View {
   $ = {};
 
   constructor() {
-    this.$.accordions = document.querySelectorAll("[data-accordion]");
+    this.$.accordions = document.querySelector("[data-accordions]");
     this.$.accordionsUl = document.querySelector("[data-accordions]");
     this.dataset = accordionsData;
   }
 
   addQuestions() {
-    const el = accordionsData.map(({ question, answer }) => {
+    const el = accordionsData.map(({ question, answer }, index) => {
       return `
-        <li class="border-bottom">
+        <li class="border-bottom" tabindex="0">
           <div data-accordion class="my-1 flex justify-between items-center gap-3">
             <h3 class="text-md-sm">${question}</h3>
-            <img data-img class="" src="assets/images/icon-plus.svg" alt="">
-            <img data-img class="hidden" src="assets/images/icon-minus.svg" alt="">
+            <img data-img class="${index === 0 && 'hidden'}" src="assets/images/icon-plus.svg" alt="">
+            <img data-img class="${index !== 0 && 'hidden'}" src="assets/images/icon-minus.svg" alt="">
           </div>
 
-          <div data-answer class="grid grid-rows-0">
+          <div data-answer class="grid grid-rows-0 ${index === 0 && 'grid-rows-1'}">
             <div class="overflow-hidden">
               <p class="text-grayish-purple">
                 ${answer}
@@ -78,12 +78,21 @@ view.addQuestions();
 //   });
 // });
 
-document.querySelector('[data-accordions]').addEventListener("click", e => {
+view.$.accordions.addEventListener("click", e => {
   const accordionElement = e.target.closest("[data-accordion]")
   if (accordionElement) {
     const images = accordionElement.querySelectorAll("[data-img]");
     images.forEach((image) => image.classList.toggle("hidden"));
     const answer = accordionElement.parentElement.querySelector("[data-answer]");
+    answer.classList.toggle("grid-rows-1");
+  }
+})
+
+view.$.accordions.addEventListener("keydown", e => {
+  if (e.key === ' ') {
+    const images = e.target.querySelectorAll("[data-img]");
+    images.forEach((image) => image.classList.toggle("hidden"));
+    const answer = e.target.querySelector("[data-answer]");
     answer.classList.toggle("grid-rows-1");
   }
 })
