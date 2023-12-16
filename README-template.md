@@ -17,14 +17,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-
+![](./design/my-design/desktop.png)
+![](./design/my-design/mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here]()
+- Live Site URL: [here](https://faq-accordion-by-frontendmentor.netlify.app/)
 
 ## My process
 
@@ -39,11 +38,6 @@ Users should be able to:
 ### What I learned
 
 I learned how fast build the app it is first time I built it in one day
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
 ## Author
 
